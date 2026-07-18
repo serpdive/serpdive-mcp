@@ -18,7 +18,7 @@ claude mcp add --transport http serpdive https://mcp.serpdive.com \
   --header "Authorization: Bearer sd_live_YOUR_KEY"
 ```
 
-### Cursor, Windsurf, and other JSON-config clients
+### Cursor and other JSON-config clients
 
 ```json
 {
@@ -56,7 +56,7 @@ Add to `claude_desktop_config.json` (Settings > Developer > Edit Config):
 claude mcp add serpdive --env SERPDIVE_API_KEY=sd_live_YOUR_KEY -- npx -y serpdive-mcp
 ```
 
-### Cursor / Windsurf
+### Cursor and other JSON-config clients
 
 ```json
 {
