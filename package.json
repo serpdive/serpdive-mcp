@@ -1,0 +1,35 @@
+{
+  "name": "serpdive-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for SERPdive, the AI Search API: real-time web search returning answer-ready page content for LLMs and agents. Same speed as Tavily, 20.2% fewer tokens, 60.7% of decided quality duels on a public benchmark.",
+  "license": "MIT",
+  "homepage": "https://serpdive.com",
+  "repository": "github:serpdive/serpdive-mcp",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "search",
+    "web-search",
+    "ai",
+    "llm",
+    "agents",
+    "claude",
+    "cursor",
+    "serpdive"
+  ],
+  "type": "module",
+  "bin": {
+    "serpdive-mcp": "bin/serpdive-mcp.js"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node test/server.test.mjs"
+  }
+}

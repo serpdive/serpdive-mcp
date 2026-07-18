@@ -1,0 +1,29 @@
+name: Publish to npm
+
+# Publishes on a version tag (v0.1.0, v1.2.3...). Uses npm trusted publishing
+# (OIDC): no token stored anywhere. Configure on npmjs.com under the package's
+# Settings > Trusted Publisher: GitHub Actions, org "serpdive", repo
+# "serpdive-mcp", workflow "publish.yml". Requires npm >= 11.5.1, hence the
+# upgrade step. NOTE (learned on serpdive-js): npm rejects FIRST-time package
+# creation from granular tokens with a misleading E404 — publish 0.1.0 manually
+# from a logged-in terminal, then tags take over.
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm install -g npm@latest
+      - run: npm install
+      - run: npm test
+      - run: npm publish --access public
