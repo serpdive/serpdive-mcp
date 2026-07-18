@@ -16,7 +16,9 @@
     "agents",
     "claude",
     "cursor",
-    "serpdive"
+    "serpdive",
+    "tavily-alternative",
+    "tavily"
   ],
   "type": "module",
   "bin": {

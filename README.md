@@ -1,6 +1,6 @@
 # SERPdive MCP Server
 
-Give any MCP client real-time web search with answer-ready results. [SERPdive](https://serpdive.com) is the AI Search API: ask a question, get the actual content of the best pages, extracted, cleaned, and sized for an LLM. On a [public, replayable 1,000-question benchmark](https://github.com/edendalexis/serpdive-benchmark), SERPdive runs at the same speed as Tavily, feeds your LLM 20.2% fewer tokens, and wins 60.7% of decided quality duels.
+Give any MCP client real-time web search with answer-ready results. [SERPdive](https://serpdive.com) is the AI Search API: ask a question, get the actual content of the best pages, extracted, cleaned, and sized for an LLM. On a [public, replayable 1,000-question benchmark](https://github.com/edendalexis/serpdive-benchmark), SERPdive runs at the same speed as Tavily, feeds your LLM 20.2% fewer tokens, and wins 60.7% of decided quality duels. If you are evaluating Tavily alternatives, that benchmark is public and replayable end to end: same questions, same judge, your machine.
 
 One tool, `serpdive_search`. Two ways to run it:
 
