@@ -1,18 +1,18 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.serpdive/serpdive-mcp",
+  "name": "com.serpdive/serpdive-mcp",
   "title": "SERPdive Web Search",
   "description": "Real-time web search for AI agents: answer-ready page content. A Tavily alternative, fewer tokens.",
   "repository": {
     "url": "https://github.com/serpdive/serpdive-mcp",
     "source": "github"
   },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "serpdive-mcp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "transport": {
         "type": "stdio"
       },
