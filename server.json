@@ -1,0 +1,34 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.serpdive/serpdive-mcp",
+  "title": "SERPdive Web Search",
+  "description": "Real-time web search returning answer-ready page content for LLMs and agents. A Tavily alternative: same speed, 20.2% fewer tokens on a public benchmark. Hosted or via npx.",
+  "repository": {
+    "url": "https://github.com/serpdive/serpdive-mcp",
+    "source": "github"
+  },
+  "version": "0.1.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "serpdive-mcp",
+      "version": "0.1.1",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        {
+          "name": "SERPDIVE_API_KEY",
+          "description": "Your SERPdive API key (sd_live_...), free at https://serpdive.com/dashboard/keys",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.serpdive.com/mcp"
+    }
+  ]
+}

@@ -13,7 +13,7 @@
 
 import { createInterface } from 'node:readline';
 
-export const VERSION = '0.1.0';
+export const VERSION = '0.1.1';
 
 const API_URL = 'https://api.serpdive.com/v1/search';
 
