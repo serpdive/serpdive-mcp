@@ -1,0 +1,17 @@
+# Smithery configuration (https://smithery.ai/docs)
+# Lets Smithery run the stdio server: user supplies their SERPdive API key.
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required: [serpdiveApiKey]
+    properties:
+      serpdiveApiKey:
+        type: string
+        description: Your SERPdive API key (sd_live_...), free at https://serpdive.com/dashboard/keys
+  commandFunction: |-
+    (config) => ({
+      command: 'node',
+      args: ['bin/serpdive-mcp.js'],
+      env: { SERPDIVE_API_KEY: config.serpdiveApiKey }
+    })
