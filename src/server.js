@@ -157,6 +157,13 @@ export async function handleMessage(msg, { key } = {}) {
       return rpcResult(id, {});
     case 'tools/list':
       return rpcResult(id, { tools: [TOOL] });
+    // Not declared in capabilities, but directory scanners and some clients
+    // probe them anyway and log a -32601 as a warning. Empty lists are the
+    // quieter truth.
+    case 'resources/list':
+      return rpcResult(id, { resources: [] });
+    case 'prompts/list':
+      return rpcResult(id, { prompts: [] });
     case 'tools/call': {
       const name = params && params.name;
       if (name !== TOOL.name) return rpcError(id, -32602, `Unknown tool: ${name}`);

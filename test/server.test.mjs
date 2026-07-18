@@ -21,8 +21,11 @@ await t('initialize echoes a known protocol version, downgrades unknown ones', a
 
 await t('notifications are swallowed, unknown methods refused', async () => {
   assert.strictEqual(await handleMessage({ jsonrpc: '2.0', method: 'notifications/initialized' }), null);
-  const r = await handleMessage(rpc('resources/list'));
+  const r = await handleMessage(rpc('logging/setLevel'));
   assert.strictEqual(r.error.code, -32601);
+  // scanner probes get quiet empty lists, not warnings
+  assert.deepStrictEqual((await handleMessage(rpc('resources/list'))).result, { resources: [] });
+  assert.deepStrictEqual((await handleMessage(rpc('prompts/list'))).result, { prompts: [] });
 });
 
 await t('tools/list ships one tool with query required', async () => {
