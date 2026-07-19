@@ -35,6 +35,13 @@ const INSTRUCTIONS =
 export const TOOL = {
   name: 'serpdive_search',
   title: 'SERPdive Web Search',
+  // Directory reviewers (Claude connectors) require title + read-only/destructive
+  // hints on every tool; search never mutates anything and reaches the open web.
+  annotations: {
+    title: 'SERPdive Web Search',
+    readOnlyHint: true,
+    openWorldHint: true,
+  },
   description:
     'Search the live web and get back answer-ready page content, not a list of links. ' +
     'Each result carries the actual text of the page (url, title, date, content), already ' +
