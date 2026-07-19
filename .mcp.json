@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "serpdive": {
+      "command": "npx",
+      "args": ["-y", "serpdive-mcp"],
+      "env": {
+        "SERPDIVE_API_KEY": "${SERPDIVE_API_KEY}"
+      }
+    }
+  }
+}
