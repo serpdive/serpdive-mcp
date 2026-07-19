@@ -2,17 +2,17 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.serpdive/serpdive-mcp",
   "title": "SERPdive Web Search",
-  "description": "Web search for AI agents: answer-ready page content. Beats Tavily on quality with 20% fewer tokens.",
+  "description": "AI-agent web search, answer-ready content. Beats Tavily: 60.7% of quality duels, 20.2% fewer tokens.",
   "repository": {
     "url": "https://github.com/serpdive/serpdive-mcp",
     "source": "github"
   },
-  "version": "0.1.3",
+  "version": "0.1.4",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "serpdive-mcp",
-      "version": "0.1.3",
+      "version": "0.1.4",
       "transport": {
         "type": "stdio"
       },

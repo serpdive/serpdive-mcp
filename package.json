@@ -1,7 +1,7 @@
 {
   "name": "serpdive-mcp",
   "mcpName": "com.serpdive/serpdive-mcp",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "MCP server for SERPdive, the AI Search API: real-time web search returning answer-ready page content for LLMs and agents. Same speed as Tavily, 20.2% fewer tokens, 60.7% of decided quality duels on a public benchmark.",
   "license": "MIT",
   "homepage": "https://serpdive.com",
