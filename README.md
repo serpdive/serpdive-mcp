@@ -72,16 +72,21 @@ claude mcp add serpdive --env SERPDIVE_API_KEY=sd_live_YOUR_KEY -- npx -y serpdi
 
 ## The tool
 
-`serpdive_search(query, model?, answer?, max_results?)`
+`serpdive_search(query, model?, max_results?)`
 
 | Argument | Type | Description |
 |---|---|---|
 | `query` | string, required | The search, in any language. Localization is automatic. |
-| `model` | `"mako"` \| `"moby"` | `mako` (default): the fact-carrying sentences of each page, fast. `moby`: the full readable text of each page, for deep research. |
-| `answer` | boolean | Also return a direct answer synthesized from the sources. |
+| `model` | `"mako"` \| `"moby"` | `mako` (default): the fact-carrying sentences of each page, fast. `moby`: full page text — slower (~1s more) and several times more tokens; use only when mako's key sentences are insufficient (long-document analysis, deep research). |
 | `max_results` | integer, 1-10 | Cap on delivered results. Omit for the engine's calibrated mix. |
 
-The response is the raw SERPdive JSON: `query`, `model`, `response_time_ms`, optional `answer`, optional `extra_info`, and `results` as `[{ url, title, date?, content }]`. Failed searches are never billed.
+The response is the raw SERPdive JSON: `query`, `model`, `response_time_ms`, optional `extra_info`, and `results` as `[{ url, title, date?, content }]`. Failed searches are never billed.
+
+There is no `answer` argument here, on purpose. Over MCP the consumer is always an
+LLM, which can write its own answer from the extracted content — a second,
+server-side synthesis costs a round-trip on every search and buys nothing. The
+[API](https://serpdive.com/docs) still offers `answer: true` for callers that are
+not models.
 
 ## Pricing and limits
 

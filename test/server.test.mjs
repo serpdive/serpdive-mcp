@@ -59,8 +59,10 @@ await t('tools/call happy path: auth header, whitelisted args, verbatim JSON', a
     );
     assert.strictEqual(seen.url, 'https://api.serpdive.com/v1/search');
     assert.strictEqual(seen.headers.authorization, 'Bearer sd_live_TEST');
-    // invalid model dropped, cap clamped to 10, no side-door knobs
-    assert.deepStrictEqual(seen.body, { query: 'q', answer: true, max_results: 10 });
+    // invalid model dropped, cap clamped to 10, no side-door knobs. `answer: true`
+    // is sent by the client above and must NOT survive: the knob is gone from the
+    // schema, and a client asking for it anyway cannot re-enable it.
+    assert.deepStrictEqual(seen.body, { query: 'q', max_results: 10 });
     assert.strictEqual(r.result.isError, undefined);
     assert.strictEqual(r.result.content[0].text, JSON.stringify(product));
   } finally {

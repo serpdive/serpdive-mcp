@@ -50,9 +50,9 @@ export const TOOL = {
     'news, prices, releases, docs, sports, niche facts. Write the query the way a person ' +
     'would type it, in any language: localization is automatic. ' +
     "The 'mako' model (default) returns the fact-carrying sentences of each page, fast and " +
-    "concise, right for most questions. The 'moby' model returns the full readable text of " +
-    'each page: use it for deep research or when complete context matters. ' +
-    'Set answer=true to also get a direct answer synthesized from the sources.',
+    "concise, right for most questions. The 'moby' model returns full page text: slower " +
+    "(~1s more) and several times more tokens, so use it only when mako's key sentences " +
+    'are insufficient (long-document analysis, deep research).',
   inputSchema: {
     type: 'object',
     properties: {
@@ -65,13 +65,9 @@ export const TOOL = {
         enum: ['mako', 'moby'],
         description:
           "'mako' (default): the key sentences of each page, concise and fast. " +
-          "'moby': the full readable text of each page, for deep research.",
-      },
-      answer: {
-        type: 'boolean',
-        description:
-          "When true, the response also carries an 'answer' field: a direct answer " +
-          'to the query synthesized from the sources.',
+          "'moby': full page text — slower (~1s more) and returns several times more " +
+          "tokens; use only when mako's key sentences are insufficient (long-document " +
+          'analysis, deep research).',
       },
       max_results: {
         type: 'integer',
@@ -109,7 +105,12 @@ async function runSearch(args, key) {
   // become a side door to the API's undocumented knobs.
   const body = { query };
   if (args.model === 'mako' || args.model === 'moby') body.model = args.model;
-  if (args.answer === true) body.answer = true;
+  // `answer` is deliberately NOT offered here, and never forwarded. On MCP the
+  // consumer is always an LLM, which can synthesize from the extracted content
+  // itself — paying for a second synthesis buys nothing and costs a round-trip
+  // on every search. Left as-is on the API, where the caller may not be a model.
+  // Advertising the knob was enough to make clients set it by default, so the
+  // fix is to stop advertising it.
   const cap = parseInt(args.max_results, 10);
   if (Number.isFinite(cap)) body.max_results = Math.min(Math.max(cap, 1), 10);
 
